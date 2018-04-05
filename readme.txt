@@ -94,3 +94,4 @@ Known Bugs/issues
   - one of the bugs is that geolocation doesn’t always work and never works when trying to run from Virtual machine as well and google api doesn’t work when trying
     to run from virtual machine because of googles security
   - Sliding of news gets a bit problematic, news sometimes overlap each other and animation isn’t as smooth as it could be.
+  - When signing in, it states that 'This app isn't verified. This app hasn't been verified by Google yet. Only proceed if you know and trust the developer.' you can still login by going Advanced and Go to Dashboard(unsafe) 
