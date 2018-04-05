@@ -1,0 +1,29 @@
+{
+  "name": "Dashboard",
+  "version": "1.0.0",
+  "description": "Configurable Dashboard",
+  "main": "tools.js",
+  "scripts": {
+    "start": "node example/server",
+    "nodemon": "node_modules/.bin/nodemon -i example/webpages/ example/svr",
+    "dashboard": "node_modules/.bin/nodemon -i example/webpages/ example/svr",
+    "initsql": "mysql -u root -p < example/sql_init.sql"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Greg",
+  "license": "",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "async": "^2.1.4",
+    "body-parser": "^1.17.1",
+    "express": "^4.14.0",
+    "google-auth-library": "^0.10.0",
+    "googleapis": "^16.1.0",
+    "mysql": "^2.12.0",
+    "ws": "^1.1.1"
+  }
+}

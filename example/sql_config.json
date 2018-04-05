@@ -1,0 +1,9 @@
+{
+    "mysql": {
+        "host": "localhost",
+        "user": "root",
+        "password": "root",
+        "database": "calendar",
+        "charset": "UTF8MB4"
+        }
+}

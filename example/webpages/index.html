@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Dashboard</title>
+
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+
+
+</head>
+<body id='bodyB' >
+
+  <label  class="switch">
+    <input id="editSwitch" type="checkbox">
+    <div class="slider round"></div>
+  </label>
+
+
+
+
+
+
+
+
+
+
+<div id="clock" data-draggable=true data-resize = "true">
+  <span id="mainTime">
+    <span id='spanClockH' class='sClock' ></span>
+    <span id='sepa' class='sClock' >:</span>
+    <span id='spanClockM' class='sClock' ></span>
+</span>
+  <span id='spanTOdDate' class='sSDate' ></span>
+
+</div>
+
+<span id='weatherDiv' data-draggable=true>
+
+
+
+
+    <h1 id="weaH1" class="newsH1">Weather</h1>
+
+
+
+  <span id = "status_">Grabing Location...</span>
+
+  <span id = "spanwea" class="spanWea">
+
+    <span id="img_temp">
+
+    <img id="iconWeather" class="imgWeather"></img>
+    <span id="currentTemp" class="weatherSpan"></span>
+    <span id="units">°C</span>
+</span>
+
+<span id="weatherDesc" ></span>
+
+
+    <span id='wea2'>
+      <span class="wind_Pressure">Wind</span><span id="wind"></span>
+      <span class="wind_Pressure">Pressure</span><span id="pressure"></span>
+      <span id='sun'>
+<img src="./img/sunrise-icon.png" class="sun_img"/><img src="./img/sunset-icon.png" class="sun_img"/>
+<span id="sunrise"></span><span id="sunset"></span>
+</span>
+    </span>
+
+    <form onKeyPress="return checkSubmit(event);" onsubmit="return false" class="place_form">
+      <div id="input_img">
+        <img id = "place_icon"src="./img/place_icon.svg"/>
+      <input autocomplete="off" class="input_place" type="text" name="place" placeholder= "Enter a town" >
+    </div>
+
+  </form>
+  <span id="forecastSpan">
+    <ul id="_5day">
+
+    </ul>
+
+  </span>
+  </span>
+</span>
+
+
+
+
+
+      <div id="div1" data-draggable=true>
+<span id='oneWEEK'>
+
+
+
+
+
+  <div id='week_TOP'>
+            <p id = "previousWeek" class="month"> &lt; </p>
+            <p id = "nextWeek" class="month"> &gt; </p>
+            <div id="MonthDivs" class="month"></div>
+  </div>
+
+
+  <ul id="ULoneWEEK" class = "daysWeek"></ul>
+
+</span>
+
+
+</div>
+<div>
+  <div id="ArrowUP" class="arrow-up"></div>
+
+<div id=add_event_div class = 'Addevents'>
+  <span id="cancel_Event" onclick="cancelEvent()">&times;</span>
+
+    <span id="AddEventTitle">Event</span>
+<form id="add_event_form">
+ <input onblur="validateInput(event)" type='text' id='name_of_event' class='event_input'placeholder='Name of Event'>
+
+ <span class="eveTitle">When</span>
+
+ <input type='text'id='full_date_of_event'class='EVENTINPUT' placeholder="Date of Event" disabled="true">
+
+<input onblur="validateInput(event)" type='time' id='start_time_of_event'class='event_input_small' >
+<span id="dash"> to </span>
+<input onblur="validateInput(event)" type='time' id='finish_time_of_event'class='event_input_small'>
+
+<span class="eveTitle">Who</span>
+
+  <select id='profileSelect' disabled="true">
+    <option value="selectProfile">--- Please select ---</option>
+
+  </select>
+
+ <p id='date_of_event'class='event_input' disabled="true" hidden="true"></p>
+
+</form>
+<button id='add_event_button' class=''>Create</button>
+
+</div>
+</div>
+
+<div id='DivTopNews' class = 'news' data-draggable=true data-cb="loadNews">
+<span class="header_">
+  <h1 id= "newsMainTitle" class="newsH1">News</h1>
+  <img id = 'newsSettings' class = "settingIcon" src = "./img/settings_icon.png"/>
+</span>
+
+    <div id="settings_">
+      <h1 class="settH1">Settings</h1>
+
+      <form onchange="return toggle_settings('settings_','0px',loadNews);" class="my-form">
+        <input type="radio" name="section" value="UK" > <lable class="radioLable">UK</lable>
+        <input type="radio" name="section" value="World"> <lable class="radioLable">World</lable><br>
+
+        <input type="radio" name="section" value="sport"> <lable class="radioLable">Sport</lable>
+        <input type="radio" name="section" value="technology"> <lable class="radioLable">Technology</lable>
+        <input type="radio" name="section" value="politics"> <lable class="radioLable">Politics</lable>
+
+      </form>
+    </div>
+
+
+<span id = 'loadingNews'>Loading News...</span>
+
+
+  <span class="spanNewsSlide" id="newsPrev"></span>
+  <span class="spanNewsSlide" id="newsCurr"></span>
+  <span class="spanNewsSlide" id="newsNext"></span>
+
+</div>
+
+
+<div id='emailContainer' data-draggable=true>
+  <span id="emailLabels" tabindex="1"></span>
+  <img id="emailSetting" src="./img/options-icon.png"/ class="optionsIcon"><span id=titleInbox>Inbox</span>
+
+<span id="notSignedIn" class="loadingE"><button id="signin" class="GButton">Sign in</button> to view your emails and events on in your calendar </span>
+<span id="loadingEmails" class="loadingE">Loading emails 0%</span
+  <ul id="listEmail">
+
+    <li id="email_1" class="emails"></li>
+    <li id="email_2" class="emails"></li>
+    <li id="email_3" class="emails"></li>
+    <li id="email_4" class="emails"></li>
+    <li id="email_5" class="emails"></li>
+    <li id="email_6" class="emails"></li>
+    <li id="email_7" class="emails"></li>
+    <li id="email_8" class="emails"></li>
+    <li id="email_9" class="emails"></li>
+    <li id="email_10" class="emails"></li>
+  </ul>
+</div>
+
+
+<div id="starDiv">
+  <ul id="starEvents"> </ul>
+
+</div>
+
+<span id="viewmail" >
+<span id="viewMailX" class="spanDelete">X</span>
+<span id="singleMailSubject" class="subject"></span>
+
+</span>
+
+
+
+
+
+
+
+<div id="bottomBar">
+<img id = "clock_ICON" src="./img/clock-icon.png" class="bottomIMG"/>
+<img id = "div1_ICON" src="./img/calendar-icon.png" class="bottomIMG" />
+<img id = "DivTopNews_ICON" src="./img/news-icon.png" class="bottomIMG" />
+<img id = "weatherDiv_ICON" src="./img/weather-icon.ico" class="bottomIMG" />
+<img id = "emailContainer_ICON" src="./img/mail-icon.png" class="bottomIMG" />
+
+</div>
+
+<button id="openSettings">Settings</button>
+<div id="SettingDash">
+  <span id="googleSignInBox">
+   <button id="signout" class="GButton" disabled="true">Sign out</button>
+   <span id="signinas" data-name="root">Singed out</span>
+ </span>
+
+
+<span id="profileSelSpan">
+  <ul id="profileSelBox"></ul>
+</span>
+</div>
+
+<script src="tools.js"></script>
+<script src="weather.js"></script>
+<script src="google_signin.js"></script>
+<script src="clock.js"></script>
+<script src="news.js"></script>
+<script src="email.js"></script>
+<script src="calendar.js"></script>
+<script src="drag_drop.js"></script>
+</body>
+</html>
